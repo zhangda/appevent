@@ -23,15 +23,18 @@ public class AppeventObjSplitFunction extends BaseFunction{
 
 	List<Object> appJsonList = (List)tuple.get(0);
 		for(Object obj : appJsonList){
-			ManagementEvent event = new ManagementEvent();
-			try {
-				BeanUtils.copyProperties(event,obj);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			String json = JSON.toJSONString(obj);
-			collector.emit(new Values(json));
+//			ManagementEvent event = new ManagementEvent();
+//			try {
+//				BeanUtils.copyProperties(event,obj);
+//			} catch (IllegalAccessException | InvocationTargetException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//			String json = JSON.toJSONString(obj);
+//			logger.info(json);
+//			collector.emit(new Values(json));
+			collector.emit(new Values(obj));
 		}	
 	}
 

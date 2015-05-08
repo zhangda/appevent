@@ -1,5 +1,8 @@
 package cn.rfidcn.appevent.scheme;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +30,16 @@ public class AvroScheme implements Scheme{
 		 Class clazz = null;
 	     try {
 			 dataFileReader = new DataFileReader<GenericRecord>(seekable, datumReader);
-			 clazz = Class.forName("cn.rfidcn.appevent.model."+dataFileReader.getSchema().getName());
+			 //clazz = Class.forName("cn.rfidcn.appevent.model."+dataFileReader.getSchema().getName());
 			 GenericRecord activity = null;
 			 while (dataFileReader.hasNext()) {
 		            activity = dataFileReader.next(activity);   
-		            Object obj = JSON.parseObject(activity.toString(), clazz);
-		            data.add(obj);
+//		            Object obj = JSON.parseObject(activity.toString(), clazz);
+//		            data.add(obj);
+		            data.add(activity.toString());
 		     }
 		     dataFileReader.close();
-		} catch (IOException | ClassNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		} 
 	     return new Values(data);
@@ -45,5 +49,4 @@ public class AvroScheme implements Scheme{
 	public Fields getOutputFields() {
 		return new Fields("datalist");
 	}
-	
 }

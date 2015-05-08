@@ -1,0 +1,19 @@
+curl --user kibanauser:i1PhGx3c  -X DELETE http://localhost:9200/appeventsindex/appevent/
+
+curl -XPUT 'http://localhost:9200/appeventsindex/'
+curl -XPUT http://localhost:9200/appeventsindex/_mapping/appevent?pretty=true -d '{"appevent":{"properties":{"ae":{"type":"integer"}, "cl":{"type":"string"}, "c":{"type":"integer"}, "d":{"type":"string"}, "geoip":{"type":"geo_point"}, "h":{"type":"string"}, "oip":{"type":"ip"}, "u":{"type":"string"}, "msg":{"type":"string"}, "r":{"type":"string"}, "ts":{"type":"date","format":"yyyy-MM-dd HH:mm:ss.SSS"}, "v":{"type":"string"}, "l":{"type":"string"}, "hae":{"type":"integer"}, "lv":{"type":"integer"}}}}'
+
+
+curl --user kibanauser:mnSF2Inq -XPUT http://localhost:9200/appeventsindex/_mapping/appevent?pretty=true -d '{"appevent":{"properties":{"ae":{"type":"integer"}, "cl":{"type":"string"}, "c":{"type":"integer"}, "d":{"type":"string"}, "geoip":{"type":"geo_point"}, "h":{"type":"string"}, "u":{"type":"string"}, "msg":{"type":"string"}, "r":{"type":"string"}, "ts":{"type":"date","format":"yyyy-MM-dd HH:mm:ss.SSS"}, "v":{"type":"string"}, "l":{"type":"string"}, "hae":{"type":"integer"}, "lv":{"type":"integer"}}}}'
+
+
+curl --user kibanauser:i1PhGx3c -X GET http://localhost:9200/appeventsindex/appevent/_search?pretty=true
+
+
+curl --user kibanauser:mnSF2Inq -XPUT http://localhost:9200/appeventsindex/_mapping/appevent?pretty=true -d '{"appevent":{"properties":{"ae":{"type":"integer"}, "cl":{"type":"string"}, "c":{"type":"integer"}, "d":{"type":"string"}, "geoip":{"type":"geo_point"}, "h":{"type":"string"}, "u":{"type":"string"}, "msg":{"type":"string"}, "r":{"type":"string"}, "ts":{"type":"date","format":"yyyy-MM-dd HH:mm:ss.SSS"}, "v":{"type":"string"}, "l":{"type":"string"}, "hae":{"type":"integer"}, "lv":{"type":"integer"}}}}'
+
+
+curl --user kibanauser:i1PhGx3c -XPUT http://localhost:9200/appeventsindex/_mapping/appevent?pretty=true -d '{"appevent":{"properties":{"ae":{"type":"integer"}, "cl":{"type":"string","index":"not_analyzed"}, "c":{"type":"integer"}, "d":{"type":"string","index":"not_analyzed"}, "geoip":{"type":"geo_point"}, "h":{"type":"string","index":"not_analyzed"}, "u":{"type":"string","index":"not_analyzed"}, "msg":{"type":"string","index":"not_analyzed"},  "oip":{"type":"string","index":"not_analyzed"}, "r":{"type":"string","index":"not_analyzed"}, "ts":{"type":"date","format":"yyyy-MM-dd HH:mm:ss.SSS"}, "v":{"type":"string","index":"not_analyzed"}, "l":{"type":"string","index":"not_analyzed"}, "hae":{"type":"integer"}, "lv":{"type":"integer"}}}}'
+
+
+curl --user kibanauser:i1PhGx3c  http://localhost:9200
